@@ -1,0 +1,10 @@
+:{$PORT} {
+	route /admin* {
+		uri strip_prefix /admin
+		reverse_proxy icompaas-phishingsimulation.railway.internal:3333
+	}
+
+	route {
+		reverse_proxy icompaas-phishingsimulation.railway.internal:80
+	}
+}
