@@ -1,6 +1,14 @@
 :{$PORT} {
+	@adminReferer {
+		header Referer *icompaas-phishingsimulation.up.railway.app/admin*
+	}
+
 	route /admin* {
 		uri strip_prefix /admin
+		reverse_proxy icompaas-phishingsimulation.railway.internal:3333
+	}
+
+	route @adminReferer {
 		reverse_proxy icompaas-phishingsimulation.railway.internal:3333
 	}
 
